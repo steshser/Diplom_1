@@ -2,15 +2,24 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TestBurger {
     private final Burger burger = new Burger();
-    private final Bun bun = new Bun("Bun", 100);
-    private final Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "Sauce", 100);
+    @Mock
+    Bun bun;
+    @Mock
+    Ingredient ingredient;
+    @Mock
+    Ingredient newIngredient;
 
     @Before
     public void setUp() throws Exception {
@@ -20,12 +29,19 @@ public class TestBurger {
 
     @Test
     public void testGetPrice(){
+        Mockito.when(bun.getPrice()).thenReturn(100F);
+        Mockito.when(ingredient.getPrice()).thenReturn(100F);
         float expectedResult = 300;
         assertEquals(expectedResult, burger.getPrice(), 0);
     }
 
     @Test
     public void testGetReceipt(){
+        Mockito.when(bun.getName()).thenReturn("Bun");
+        Mockito.when(ingredient.getName()).thenReturn("Ingredient");
+        Mockito.when(bun.getPrice()).thenReturn(100F);
+        Mockito.when(ingredient.getPrice()).thenReturn(100F);
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
         assertTrue(burger.getReceipt().contains(bun.getName()));
         assertTrue(burger.getReceipt().contains(ingredient.getName()));
     }
@@ -39,8 +55,9 @@ public class TestBurger {
 
     @Test
     public void testMoveIngredient(){
-        Ingredient newIngredient = new Ingredient(IngredientType.FILLING, "FILLING", 200);
         burger.addIngredient(newIngredient);
+        Mockito.when(ingredient.getName()).thenReturn("Sauce");
+        Mockito.when(newIngredient.getName()).thenReturn("Filling");
         burger.moveIngredient(0, 1);
         String expectedResult = "Sauce";
         assertEquals(expectedResult, burger.ingredients.get(1).getName());
