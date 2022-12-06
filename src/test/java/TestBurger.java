@@ -23,7 +23,7 @@ public class TestBurger {
     Ingredient newIngredient;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
     }
