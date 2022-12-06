@@ -1,6 +1,7 @@
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import praktikum.Bun;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestBun {
     private final String NAME = "BunName";
@@ -8,13 +9,13 @@ public class TestBun {
 
 
     @Test
-    public void testGetName(){
+    public void testGetName() {
         Bun bun = new Bun(NAME, PRICE);
         assertEquals(NAME, bun.getName());
     }
 
     @Test
-    public void testGetPrice(){
+    public void testGetPrice() {
         Bun bun = new Bun(NAME, PRICE);
         assertEquals(PRICE, bun.getPrice(), 0);
     }

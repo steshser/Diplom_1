@@ -1,5 +1,3 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +8,9 @@ import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestBurger {
@@ -28,7 +29,7 @@ public class TestBurger {
     }
 
     @Test
-    public void testGetPrice(){
+    public void testGetPrice() {
         Mockito.when(bun.getPrice()).thenReturn(100F);
         Mockito.when(ingredient.getPrice()).thenReturn(100F);
         float expectedResult = 300;
@@ -36,7 +37,7 @@ public class TestBurger {
     }
 
     @Test
-    public void testGetReceipt(){
+    public void testGetReceipt() {
         Mockito.when(bun.getName()).thenReturn("Bun");
         Mockito.when(ingredient.getName()).thenReturn("Ingredient");
         Mockito.when(bun.getPrice()).thenReturn(100F);
@@ -47,14 +48,14 @@ public class TestBurger {
     }
 
     @Test
-    public void testRemoveIngredient(){
+    public void testRemoveIngredient() {
         int expectedResult = 0;
         burger.removeIngredient(0);
         assertEquals(expectedResult, burger.ingredients.size());
     }
 
     @Test
-    public void testMoveIngredient(){
+    public void testMoveIngredient() {
         burger.addIngredient(newIngredient);
         Mockito.when(ingredient.getName()).thenReturn("Sauce");
         Mockito.when(newIngredient.getName()).thenReturn("Filling");

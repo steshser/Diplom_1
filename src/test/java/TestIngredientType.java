@@ -1,5 +1,6 @@
 import org.junit.Test;
 import praktikum.IngredientType;
+
 import static org.junit.Assert.assertNotNull;
 
 public class TestIngredientType {

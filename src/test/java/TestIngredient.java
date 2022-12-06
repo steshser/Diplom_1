@@ -1,9 +1,10 @@
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class TestIngredient {
@@ -19,7 +20,7 @@ public class TestIngredient {
 
     @Parameterized.Parameters
     public static Object[] getSumData() {
-        return new Object[][] {
+        return new Object[][]{
                 {IngredientType.SAUCE, "Sauce", 100},
                 {IngredientType.FILLING, "Filling", 10}, // передали тестовые данные
         };
